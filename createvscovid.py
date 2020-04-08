@@ -19,7 +19,7 @@ artkeys = ["watercolor", "acrylic paint", "oil paint", "gouache", "oil pastel", 
 
 exclude = ["sale", "shop", "buy", "% off", "vent", "nsfw", "shit", "fuck", "bitch"]
 
-indicators = ["i'm scared", "i'm worried", "i'm stressed", "i'm upset", "i'm terrified", "i'm afraid"]
+indicators = ["i'm scared", "i'm worried", "i'm stressed", "i'm upset", "i'm terrified"]
 
 covid_indicators = ["coronavirus", "virus" "corona virus", "pandemic", "covid", "quarantine", "lockdown", "lock down", "isolat", "test positive", "tested positive", "social distanc"]
 
@@ -54,17 +54,16 @@ class RetweetListener(tweepy.StreamListener):
                     # print(tweet.possibly_sensitive)
                     print("Meets criteria")
 
-                    getTweet = self.api.search(q="i'm%20scared OR i'm%20worried OR i'm%20stressed OR i'm%20upset OR i'm%20terrified OR i'm%20afraid", count=500000, lang='en')
+                    getTweet = self.api.search(q="i'm%20scared OR i'm%20worried OR i'm%20stressed OR i'm%20upset OR i'm%20terrified", count=5000, lang='en')
 
                     tweeted = False
 
                     for replyTweet in getTweet:
 
-
-                        afraid = False
-                        abtCovid = False
-
                         if not replyTweet.retweeted and not tweeted and not hasattr(replyTweet, 'retweeted_status'):
+                        
+                            afraid = False
+                            abtCovid = False
     
                             for phrase in covid_indicators:
                                 if phrase in replyTweet.text.lower():
