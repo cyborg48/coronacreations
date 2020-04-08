@@ -19,9 +19,7 @@ artkeys = ["watercolor", "acrylic paint", "oil paint", "gouache", "oil pastel", 
 
 exclude = ["sale", "shop", "buy", "% off", "vent", "nsfw", "shit", "fuck", "bitch"]
 
-indicators = ["i'm scared", "i'm worried", "i'm stressed", "making me stressed," "making me scared", "making me worried", "terrifying me", "scaring me", "worrying me",
-        "it's scary that", "it's stressful", "it's worrisome", "i'm terrified", "i'm upset", "i'm afraid", "stressed out," "stressing me out", "upsetting me", "scared", "upset",
-        "worried", "stressed"]
+indicators = ["i'm scared", "i'm worried", "i'm stressed", "i'm upset", "i'm terrified", "i'm afraid"]
 
 covid_indicators = ["coronavirus", "virus" "corona virus", "pandemic", "covid", "quarantine", "lockdown", "lock down", "isolat", "test positive", "tested positive", "social distanc"]
 
@@ -67,9 +65,12 @@ class RetweetListener(tweepy.StreamListener):
 
                         if not replyTweet.retweeted and not tweeted and not hasattr(replyTweet, 'retweeted_status'):
     
-                            for phrase in covid_indicators:
+                            for phrase in indicators:
                                 if phrase in replyTweet.text.lower():
                                     afraid = True
+                            for phrase in covid_indicators:
+                                if phrase in replyTweet.text.lower():
+                                    afraid = False
 
                             # tones = toneanalyzer.analyze(replyTweet.text)
                             # print(tones)
