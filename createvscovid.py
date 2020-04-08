@@ -80,7 +80,7 @@ class RetweetListener(tweepy.StreamListener):
                             # print(tones)
                         
                             # if(("fear" in tones or "joy" in tones) and not 'joy' in tones and not 'anger' in tones):
-                            if afraid and abtCovid:
+                            if abtCovid:
                                 newTweet = "https://twitter.com/" + replyTweet.user.screen_name + "/status/" + str(replyTweet.id) + \
                                     " I wish I could do more to ease your stress during this rough time. Alas, I am only a few lines of code "\
                                     "but I hope this piece brings you some comfort. " + \
