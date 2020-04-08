@@ -85,7 +85,7 @@ class RetweetListener(tweepy.StreamListener):
                                 self.api.update_status(newTweet)
                                 print("Retweeted")
                                 tweeted = True
-                                time.sleep(300)
+                                time.sleep(600)
 
                     # return [tweet.user.screen_name, tweet.id]
                     # tweet.retweet()
