@@ -64,7 +64,7 @@ class RetweetListener(tweepy.StreamListener):
 
                         afraid = False
 
-                        if not replyTweet.retweeted and tweeted and not hasattr(replyTweet, 'retweeted_status'):
+                        if not replyTweet.retweeted and not tweeted and not hasattr(replyTweet, 'retweeted_status'):
     
                             for phrase in covid_indicators:
                                 if phrase in replyTweet.text.lower():
