@@ -21,7 +21,8 @@ exclude = ["sale", "shop", "buy", "% off", "vent", "nsfw", "shit", "fuck", "bitc
 
 indicators = ["i'm scared", "i'm worried", "i'm stressed", "i'm upset", "i'm terrified"]
 
-covid_indicators = ["coronavirus", "virus" "corona virus", "pandemic", "covid", "quarantine", "lockdown", "lock down", "isolat", "test positive", "tested positive", "social distanc"]
+covid_indicators = ["coronavirus", "virus" "corona virus", "pandemic", "covid", "quarantine", "lockdown", "lock down", "isolat", "test positive", "tested positive", "social distanc",
+        "hospital", "nurse", "doctor", "symptom", "sneeze", "cough"]
 
 
 class RetweetListener(tweepy.StreamListener):
