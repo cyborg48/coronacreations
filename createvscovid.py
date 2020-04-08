@@ -21,9 +21,8 @@ indicators = ["i'm scared", "i'm worried", "i'm stressed", "making me stressed,"
         "it's scary that", "it's stressful", "it's worrisome", "i'm terrified", "i'm upset", "i'm afraid", "stressed out," "stressing me out", "upsetting me", "scared", "upset",
         "worried", "stressed"]
 
-covid_indicators = ["coronavirus", "virus" "corona virus", "pandemic", "covid", "sick", "ill", "health", "hospital", "doctor", "quarantine", "lockdown", "lock down", "isolat", "safe",
-        "cough", "sneeze", "nurse", "cold", "flu", "symptom", "stay at home", "stay inside", "tested", "test", "test positive", "tested positive", "medicine", "treatment", "social distanc",
-        "spread", "disease"]
+covid_indicators = ["coronavirus", "virus" "corona virus", "pandemic", "covid", "sick", "hospital", "doctor", "quarantine", "lockdown", "lock down", "isolat",
+        "cough", "sneeze", "nurse", "cold", " flu ", "symptom", "stay at home", "stay inside", "test positive", "tested positive", "social distanc"]
 
 
 class RetweetListener(tweepy.StreamListener):
@@ -56,8 +55,7 @@ class RetweetListener(tweepy.StreamListener):
                     # print(tweet.possibly_sensitive)
                     print("Meets criteria")
 
-                    getTweet = self.api.search(q="i'm%20scared OR i'm%20worried OR i'm%20stressed OR i'm%20upset OR i'm%20terrified OR i'm%20afraid OR \
-                            i'm%20anxious OR anxiety", count=500000, lang='en')
+                    getTweet = self.api.search(q="i'm%20scared OR i'm%20worried OR i'm%20stressed OR i'm%20upset OR i'm%20terrified OR i'm%20afraid", count=500000, lang='en')
 
                     tweeted = False
 
