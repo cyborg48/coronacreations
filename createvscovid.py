@@ -64,7 +64,7 @@ class RetweetListener(tweepy.StreamListener):
 
                     for replyTweet in getTweet:
 
-                        if not (("_" + replyTweet.id) in retweetedTweets) and not tweeted and not hasattr(replyTweet, 'retweeted_status'):
+                        if not (("_" + str(replyTweet.id)) in retweetedTweets) and not tweeted and not hasattr(replyTweet, 'retweeted_status'):
                         
                             afraid = False
                             abtCovid = False
@@ -90,7 +90,7 @@ class RetweetListener(tweepy.StreamListener):
                                      "https://twitter.com/" + tweet.user.screen_name + "/status/" + str(tweet.id)
                         
                                 self.api.update_status(newTweet)
-                                os.environ['RETWEETED'] = retweetedTweets + '_' + replyTweet.id
+                                os.environ['RETWEETED'] = retweetedTweets + '_' + str(replyTweet.id)
                                 print("Retweeted")
                                 tweeted = True
                                 time.sleep(600)
