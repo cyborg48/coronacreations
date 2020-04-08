@@ -57,8 +57,7 @@ class RetweetListener(tweepy.StreamListener):
                     print("Meets criteria")
 
                     getTweet = self.api.search(q="i'm%20scared OR i'm%20worried OR i'm%20stressed OR i'm%20upset OR i'm%20terrified OR i'm%20afraid OR \
-                            im%20scared OR im%20worried OR im%20stressed OR im%20upset OR im%20terrified OR im%20afraid OR scaring%20me OR stressing%20me%20out OR \
-                            upsetting%20me OR anxiety OR im%20anxious OR i'm%20anxious OR my%20anxiety", count=500000, lang='en')
+                            i'm%20anxious OR anxiety", count=500000, lang='en')
 
                     tweeted = False
 
