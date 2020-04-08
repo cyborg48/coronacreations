@@ -67,7 +67,7 @@ class RetweetListener(tweepy.StreamListener):
                         if not tweeted and not hasattr(replyTweet, 'retweeted_status'):
     
                             for phrase in covid_indicators:
-                                if phrase in tweet.text.lower():
+                                if phrase in replyTweet.text.lower():
                                     afraid = True
 
                             # tones = toneanalyzer.analyze(replyTweet.text)
