@@ -23,8 +23,7 @@ indicators = ["i'm scared", "i'm worried", "i'm stressed", "making me stressed,"
         "it's scary that", "it's stressful", "it's worrisome", "i'm terrified", "i'm upset", "i'm afraid", "stressed out," "stressing me out", "upsetting me", "scared", "upset",
         "worried", "stressed"]
 
-covid_indicators = ["coronavirus", "virus" "corona virus", "pandemic", "covid", "sick", "hospital", "doctor", "quarantine", "lockdown", "lock down", "isolat",
-        "cough", "sneeze", "nurse", "cold", " flu ", "symptom", "stay at home", "stay inside", "test positive", "tested positive", "social distanc"]
+covid_indicators = ["coronavirus", "virus" "corona virus", "pandemic", "covid", "quarantine", "lockdown", "lock down", "isolat", "test positive", "tested positive", "social distanc"]
 
 
 class RetweetListener(tweepy.StreamListener):
@@ -85,7 +84,7 @@ class RetweetListener(tweepy.StreamListener):
                                 self.api.update_status(newTweet)
                                 print("Retweeted")
                                 tweeted = True
-                                time.sleep(600)
+                                time.sleep(300)
 
                     # return [tweet.user.screen_name, tweet.id]
                     # tweet.retweet()
