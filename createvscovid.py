@@ -54,7 +54,7 @@ class RetweetListener(tweepy.StreamListener):
                     # print(tweet.possibly_sensitive)
                     print("Meets criteria")
 
-                    getTweet = self.api.search(q="i'm%20scared OR i'm%20worried OR i'm%20stressed OR i'm%20upset OR i'm%20terrified", count=50000, lang='en')
+                    getTweet = self.api.search(q="i'm%20scared OR i'm%20worried OR i'm%20stressed OR i'm%20upset OR i'm%20terrified", count=500000, lang='en')
 
                     tweeted = False
 
@@ -64,13 +64,16 @@ class RetweetListener(tweepy.StreamListener):
                         
                             afraid = False
                             abtCovid = False
-    
+                            
                             for phrase in covid_indicators:
                                 if phrase in replyTweet.text.lower():
                                     abtCovid = True
+                                    print("true1")
+
                             for phrase in indicators:
                                 if phrase in replyTweet.text.lower():
                                     afraid = True
+                                    print("true2")
 
                             # tones = toneanalyzer.analyze(replyTweet.text)
                             # print(tones)
@@ -85,11 +88,7 @@ class RetweetListener(tweepy.StreamListener):
                                 self.api.update_status(newTweet)
                                 print("Retweeted")
                                 tweeted = True
-                                # time.sleep(600)
 
-                    # return [tweet.user.screen_name, tweet.id]
-                    # tweet.retweet()
-                    # time.sleep(1)
             except Exception as e:
                 logger.error("Error on fav and retweet", exc_info=True)
 
