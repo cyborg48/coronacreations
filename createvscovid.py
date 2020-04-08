@@ -59,8 +59,10 @@ class RetweetListener(tweepy.StreamListener):
 
                     tweeted = False
 
-                    afraid = False
                     for replyTweet in getTweet:
+
+
+                        afraid = False
 
                         if not tweeted and not hasattr(replyTweet, 'retweeted_status'):
     
