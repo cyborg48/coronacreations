@@ -62,21 +62,22 @@ class RetweetListener(tweepy.StreamListener):
 
 
                         afraid = False
+                        abtCovid = False
 
                         if not replyTweet.retweeted and not tweeted and not hasattr(replyTweet, 'retweeted_status'):
     
+                            for phrase in covid_indicators:
+                                if phrase in replyTweet.text.lower():
+                                    abtCovid = True
                             for phrase in indicators:
                                 if phrase in replyTweet.text.lower():
                                     afraid = True
-                            for phrase in covid_indicators:
-                                if phrase in replyTweet.text.lower():
-                                    afraid = False
 
                             # tones = toneanalyzer.analyze(replyTweet.text)
                             # print(tones)
                         
                             # if(("fear" in tones or "joy" in tones) and not 'joy' in tones and not 'anger' in tones):
-                            if afraid:
+                            if afraid and abtCovid:
                                 newTweet = "https://twitter.com/" + replyTweet.user.screen_name + "/status/" + str(replyTweet.id) + \
                                     " I wish I could do more to ease your stress during this rough time. Alas, I am only a few lines of code "\
                                     "but I hope this piece brings you some comfort. " + \
