@@ -1,7 +1,7 @@
 import tweepy
 import logging
 import os
-import keys
+# import keys
 
 logger = logging.getLogger()
 
