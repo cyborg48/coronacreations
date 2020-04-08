@@ -89,6 +89,7 @@ class RetweetListener(tweepy.StreamListener):
                                 self.api.update_status(newTweet)
                                 print("Retweeted")
                                 tweeted = True
+                                time.sleep(600)
 
             except Exception as e:
                 logger.error("Error on fav and retweet", exc_info=True)
