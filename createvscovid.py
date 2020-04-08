@@ -5,7 +5,7 @@ import json
 import time
 import toneanalyzer
 import time
-
+import os
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
@@ -59,9 +59,12 @@ class RetweetListener(tweepy.StreamListener):
 
                     tweeted = False
 
+                    retweetedTweets = os.environ['RETWEETED']
+                    
+
                     for replyTweet in getTweet:
 
-                        if not replyTweet.retweeted and not tweeted and not hasattr(replyTweet, 'retweeted_status'):
+                        if not (("_" + replyTweet.id) in retweetedTweets) and not tweeted and not hasattr(replyTweet, 'retweeted_status'):
                         
                             afraid = False
                             abtCovid = False
@@ -87,6 +90,7 @@ class RetweetListener(tweepy.StreamListener):
                                      "https://twitter.com/" + tweet.user.screen_name + "/status/" + str(tweet.id)
                         
                                 self.api.update_status(newTweet)
+                                os.environ['RETWEETED'] = retweetedTweets + '_' + replyTweet.id
                                 print("Retweeted")
                                 tweeted = True
                                 time.sleep(600)
