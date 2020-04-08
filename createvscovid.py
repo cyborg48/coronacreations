@@ -54,7 +54,7 @@ class RetweetListener(tweepy.StreamListener):
                     # print(tweet.possibly_sensitive)
                     print("Meets criteria")
 
-                    getTweet = self.api.search(q="i'm%20scared OR i'm%20worried OR i'm%20stressed OR i'm%20upset OR i'm%20terrified", count=5000, lang='en')
+                    getTweet = self.api.search(q="i'm%20scared OR i'm%20worried OR i'm%20stressed OR i'm%20upset OR i'm%20terrified", count=50000, lang='en')
 
                     tweeted = False
 
@@ -85,7 +85,7 @@ class RetweetListener(tweepy.StreamListener):
                                 self.api.update_status(newTweet)
                                 print("Retweeted")
                                 tweeted = True
-                                time.sleep(600)
+                                # time.sleep(600)
 
                     # return [tweet.user.screen_name, tweet.id]
                     # tweet.retweet()
