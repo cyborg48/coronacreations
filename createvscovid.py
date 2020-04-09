@@ -84,8 +84,8 @@ class RetweetListener(tweepy.StreamListener):
                             # if(("fear" in tones or "joy" in tones) and not 'joy' in tones and not 'anger' in tones):
                             if abtCovid:
                                 newTweet = "https://twitter.com/" + replyTweet.user.screen_name + "/status/" + str(replyTweet.id) + \
-                                    " I wish I could do more to ease your stress during this rough time. Alas, I am only a few lines of code "\
-                                    "but I hope this piece brings you some comfort. " + \
+                                    " I wish I could do more to ease your fears right now. Alas, I am only a few lines of code "\
+                                    "but I hope this piece brings you some comfort and solidarity. Please know that you are not alone. " + \
                                      "https://twitter.com/" + tweet.user.screen_name + "/status/" + str(tweet.id)
                         
                                 self.api.update_status(newTweet)
