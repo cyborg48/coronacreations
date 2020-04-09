@@ -17,7 +17,7 @@ artkeys = ["watercolor", "acrylic paint", "oil paint", "gouache", "oil pastel", 
             "i painted", "digital art", "krita", "medibang", "clip studio paint", "escapril", "creative writing" "lineart", "micron", "prismacolor",
             "i wrote a poem", "i wrote a story", "i wrote a song"]
 
-exclude = ["sale", "shop", "buy", "% off", "vent", "nsfw", "shit", "fuck", "bitch"]
+exclude = ["sale", "shop", "buy", "% off", "vent", "nsfw", "shit", "fuck", "bitch", "nude"]
 
 indicators = ["i'm scared", "i'm worried", "i'm stressed", "i'm upset", "i'm terrified"]
 
