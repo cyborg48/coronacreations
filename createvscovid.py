@@ -60,7 +60,7 @@ class RetweetListener(tweepy.StreamListener):
 
                     getTweet = tweepy.Cursor(self.api.search, q="i'm%20scared OR i'm%20worried OR i'm%20stressed OR i'm%20upset OR \
                             i'm%20terrified", result_type = "recent", lang='en').items(10000)
-                    cutoff = random.randint(0, 5000)
+                    cutoff = random.randint(0, 50)
                     # getTweet = getTweet[0][cutoff:]
                     # print(getTweet[0][0])
                     # print(len(getTweet))
@@ -73,7 +73,7 @@ class RetweetListener(tweepy.StreamListener):
 
                         # print(count)
 
-                        if not replyTweet.id in retweeted_ids and not tweeted and not hasattr(replyTweet, 'retweeted_status') and count > cutoff:
+                        if not replyTweet.id in retweeted_ids and not tweeted and not hasattr(replyTweet, 'retweeted_status') and count % cutoff == 0:
                         
                             afraid = False
                             abtCovid = False
