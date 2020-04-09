@@ -5,7 +5,6 @@ import json
 import time
 import toneanalyzer
 import time
-import os
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
@@ -22,6 +21,8 @@ exclude = ["sale", "shop", "buy", "% off", "vent", "nsfw", "shit", "fuck", "bitc
 indicators = ["i'm scared", "i'm worried", "i'm stressed", "i'm upset", "i'm terrified"]
 
 covid_indicators = ["coronavirus", "virus" "corona virus", "pandemic", "covid", "quarantine", "lockdown", "lock down", "isolat", "test positive", "tested positive", "social distanc"]
+
+retweeted_ids = []
 
 
 class RetweetListener(tweepy.StreamListener):
@@ -58,12 +59,9 @@ class RetweetListener(tweepy.StreamListener):
 
                     tweeted = False
 
-                    retweetedTweets = os.environ['RETWEETED']
-                    
-
                     for replyTweet in getTweet:
 
-                        if not (("_" + str(replyTweet.id)) in retweetedTweets) and not tweeted and not hasattr(replyTweet, 'retweeted_status'):
+                        if not replyTweet.id in retweeted_ids and not tweeted and not hasattr(replyTweet, 'retweeted_status'):
                         
                             afraid = False
                             abtCovid = False
@@ -89,11 +87,12 @@ class RetweetListener(tweepy.StreamListener):
                                      "https://twitter.com/" + tweet.user.screen_name + "/status/" + str(tweet.id)
                         
                                 self.api.update_status(newTweet)
-                                os.environ['RETWEETED'] = retweetedTweets + '_' + str(replyTweet.id)
-                                if(len(os.environ['RETWEETED']) > 1000):
-                                    os.environ['RETWEETED'] = os.environ['RETWEETED'][800:]
-                                print(os.environ['RETWEETED'])
                                 print("Retweeted")
+                                retweeted_ids.append(replyTweet.id)
+                                if(len(retweeted_ids) > 100):
+                                    retweeted_ids = retweeted_ids[80:]
+                                for(id in retweeted_ids):
+                                    print(id)
                                 tweeted = True
                                 time.sleep(600)
 
