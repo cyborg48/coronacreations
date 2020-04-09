@@ -59,7 +59,7 @@ class RetweetListener(tweepy.StreamListener):
                     global retweeted_ids
 
                     getTweet = self.api.search(q="i'm%20scared OR i'm%20worried OR i'm%20stressed OR i'm%20upset OR i'm%20terrified", count=500000, lang='en')
-                    cutoff = random.randint(0, 400000)
+                    cutoff = random.randint(0, 200000)
                     # getTweet = getTweet[0][cutoff:]
                     # print(getTweet[0][0])
                     # print(len(getTweet))
