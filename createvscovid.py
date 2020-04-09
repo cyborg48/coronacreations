@@ -21,8 +21,7 @@ exclude = ["sale", "shop", "buy", "% off", "vent", "nsfw", "shit", "fuck", "bitc
 
 indicators = ["i'm scared", "i'm worried", "i'm stressed", "i'm upset", "i'm terrified"]
 
-covid_indicators = ["coronavirus", "virus" "corona virus", "pandemic", "covid", "quarantine", "lockdown", "lock down", "isolat", "test positive", "tested positive", "social distanc",
-        "hospital", "nurse", "doctor", "symptom", "sneeze", "cough"]
+covid_indicators = ["coronavirus", "virus" "corona virus", "pandemic", "covid", "quarantine", "lockdown", "lock down", "isolat", "test positive", "tested positive", "social distanc"]
 
 
 class RetweetListener(tweepy.StreamListener):
@@ -91,6 +90,9 @@ class RetweetListener(tweepy.StreamListener):
                         
                                 self.api.update_status(newTweet)
                                 os.environ['RETWEETED'] = retweetedTweets + '_' + str(replyTweet.id)
+                                if(len(os.environ['RETWEETED']) > 1000):
+                                    os.environ['RETWEETED'] = os.environ['RETWEETED'][800:]
+                                print(os.environ['RETWEETED'])
                                 print("Retweeted")
                                 tweeted = True
                                 time.sleep(600)
