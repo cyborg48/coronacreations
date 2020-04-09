@@ -70,6 +70,8 @@ class RetweetListener(tweepy.StreamListener):
 
                     for replyTweet in getTweet:
 
+                        print(count)
+
                         if not replyTweet.id in retweeted_ids and not tweeted and not hasattr(replyTweet, 'retweeted_status') and count > cutoff:
                         
                             afraid = False
