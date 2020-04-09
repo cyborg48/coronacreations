@@ -13,7 +13,7 @@ logger = logging.getLogger()
 
 # https://twitter.com/<user_displayname>/status/<tweet_id>
 artkeys = ["watercolor", "acrylic paint", "oil paint", "gouache", "oil pastel", "colored pencil", "mixed media", "i sketched",
-            "digital painting", "digital art", "chalk pastel", "my writing", "my poem", "my painting", "arts and crafts", "i drew",
+            "digital painting", "digital art", "chalk pastel", "my writing", "my poem", "my painting", "arts and crafts", 
             "i painted", "digital art", "krita", "medibang", "clip studio paint", "escapril", "creative writing" "lineart", "micron", "prismacolor",
             "i wrote a poem", "i wrote a story", "i wrote a song"]
 
