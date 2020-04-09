@@ -60,15 +60,17 @@ class RetweetListener(tweepy.StreamListener):
 
                     getTweet = self.api.search(q="i'm%20scared OR i'm%20worried OR i'm%20stressed OR i'm%20upset OR i'm%20terrified", count=500000, lang='en')
                     cutoff = random.randint(0, 400000)
-                    getTweet = getTweet[0][cutoff:]
-                    print(getTweet[0][0])
-                    print(len(getTweet))
+                    # getTweet = getTweet[0][cutoff:]
+                    # print(getTweet[0][0])
+                    # print(len(getTweet))
 
                     tweeted = False
 
+                    count = 0
+
                     for replyTweet in getTweet:
 
-                        if not replyTweet.id in retweeted_ids and not tweeted and not hasattr(replyTweet, 'retweeted_status'):
+                        if not replyTweet.id in retweeted_ids and not tweeted and not hasattr(replyTweet, 'retweeted_status') and count > cutoff:
                         
                             afraid = False
                             abtCovid = False
@@ -95,13 +97,14 @@ class RetweetListener(tweepy.StreamListener):
                         
                                 self.api.update_status(newTweet)
                                 print("Retweeted")
-                                retweeted_ids.append(replyTweet.id)
-                                if(len(retweeted_ids) > 100):
-                                    retweeted_ids = retweeted_ids[80:]
-                                for id in retweeted_ids:
-                                    print(id)
+                                # retweeted_ids.append(replyTweet.id)
+                                # if(len(retweeted_ids) > 100):
+                                #     retweeted_ids = retweeted_ids[80:]
+                                # for id in retweeted_ids:
+                                #    print(id)
                                 tweeted = True
                                 time.sleep(600)
+                        count++
 
             except Exception as e:
                 logger.error("Error on fav and retweet", exc_info=True)
