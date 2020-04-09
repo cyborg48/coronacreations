@@ -104,7 +104,7 @@ class RetweetListener(tweepy.StreamListener):
                                 #    print(id)
                                 tweeted = True
                                 time.sleep(600)
-                        count++
+                        count += 1
 
             except Exception as e:
                 logger.error("Error on fav and retweet", exc_info=True)
