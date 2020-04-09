@@ -91,7 +91,7 @@ class RetweetListener(tweepy.StreamListener):
                                 retweeted_ids.append(replyTweet.id)
                                 if(len(retweeted_ids) > 100):
                                     retweeted_ids = retweeted_ids[80:]
-                                for(id in retweeted_ids):
+                                for id in retweeted_ids:
                                     print(id)
                                 tweeted = True
                                 time.sleep(600)
