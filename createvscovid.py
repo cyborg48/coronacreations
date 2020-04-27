@@ -13,7 +13,7 @@ logger = logging.getLogger()
 
 # https://twitter.com/<user_displayname>/status/<tweet_id>
 artkeys = ["watercolor", "acrylic paint", "oil paint", "gouache", "oil pastel", "colored pencil", "mixed media", "i sketched",
-            "digital painting", "digital art", "chalk pastel", "my writing", "my poem", "my painting", "arts and crafts", 
+            "digital painting", "digital art", "chalk pastel", "my poem", "my painting", "arts and crafts", 
             "i painted", "digital art", "krita", "medibang", "clip studio paint", "escapril", "creative writing" "lineart", "micron", "prismacolor",
             "i wrote a poem", "i wrote a story", "i wrote a song"]
 
@@ -58,9 +58,10 @@ class RetweetListener(tweepy.StreamListener):
 
                     global retweeted_ids
 
-                    getTweet = tweepy.Cursor(self.api.search, q="i'm%20scared OR i'm%20worried OR i'm%20stressed OR i'm%20upset OR \
-                            i'm%20terrified", result_type = "recent", lang='en').items(10000)
-                    cutoff = random.randint(0, 50)
+                    getTweet = tweepy.Cursor(self.api.search, q="i'm%20scared OR i'm%20worried OR i'm%20stressed OR i'm%20upset OR i'm%20anxious OR \
+                            i'm%20terrified", result_type = "recent", lang='en').items(5000)
+                    # cutoff = random.randint(0, 5000)
+                    # getTweet = getTweet[cutoff:]
                     # getTweet = getTweet[0][cutoff:]
                     # print(getTweet[0][0])
                     # print(len(getTweet))
@@ -106,7 +107,7 @@ class RetweetListener(tweepy.StreamListener):
                                 # for id in retweeted_ids:
                                 #    print(id)
                                 tweeted = True
-                                time.sleep(600)
+                                time.sleep(5)
                         count += 1
 
             except Exception as e:
